@@ -1,128 +1,161 @@
 import customtkinter as ctk
 from tkinter import messagebox
+from datetime import datetime
 
 # Theme Settings
 ctk.set_appearance_mode("light")
-ctk.set_default_color_theme("green") 
+ctk.set_default_color_theme("blue") 
 
 class BaguioCouncilApp(ctk.CTk):
     def __init__(self):
         super().__init__()
 
         self.title("Baguio City Council - Secure Access")
-        self.geometry("400x450")
-        self.resizable(False, False)
+        self.geometry("1280x800")
+        self.resizable(True, True)
+        self.configure(fg_color="#f8fafc") 
 
-        # Container to hold the current view
         self.container = ctk.CTkFrame(self, fg_color="transparent")
         self.container.pack(fill="both", expand=True)
 
         self.show_login_screen()
 
-    def show_login_screen(self):
-        # Clear container
+    def clear_screen(self):
         for widget in self.container.winfo_children():
             widget.destroy()
 
-        # YOUR EXACT DESIGN STARTS HERE
-        self.frame = ctk.CTkFrame(self.container, corner_radius=15)
+    def create_navbar(self):
+        """Standard Navbar for all internal pages"""
+        navbar = ctk.CTkFrame(self.container, fg_color="white", height=70, corner_radius=0, border_width=1, border_color="#f1f5f9")
+        navbar.pack(fill="x", side="top")
+        
+        # Logo and Title Left
+        ctk.CTkLabel(navbar, text="🏛️", font=("Arial", 24)).pack(side="left", padx=(30, 10))
+        title_box = ctk.CTkFrame(navbar, fg_color="transparent")
+        title_box.pack(side="left", pady=10)
+        ctk.CTkLabel(title_box, text="Sangguniang Panlungsod", font=("Arial", 15, "bold"), text_color="#0f172a").pack(anchor="w")
+        ctk.CTkLabel(title_box, text="CITY COUNCIL (BAGUIO CITY)", font=("Arial", 10), text_color="#64748b").pack(anchor="w")
+
+        # Buttons Right
+        ctk.CTkButton(navbar, text="Logout", fg_color="#fff1f2", text_color="#e11d48", hover_color="#ffe4e6", 
+                      width=90, font=("Arial", 12, "bold"), command=self.show_login_screen).pack(side="right", padx=30)
+        
+        ctk.CTkButton(navbar, text="Home", fg_color="#10b981", text_color="white", hover_color="#059669", 
+                      width=80, font=("Arial", 12, "bold"), command=self.show_dashboard).pack(side="right")
+
+    def show_login_screen(self):
+        self.clear_screen()
+        self.geometry("400x450")
+        self.resizable(False, False)
+        
+        self.frame = ctk.CTkFrame(self.container, corner_radius=15, fg_color="white", border_width=1, border_color="#e2e8f0")
         self.frame.pack(pady=40, padx=40, fill="both", expand=True)
 
-        self.header = ctk.CTkLabel(self.frame, text="CITY COUNCIL OF BAGUIO", 
-                                   font=("Helvetica", 18, "bold"), text_color="#1B4D3E")
+        self.header = ctk.CTkLabel(self.frame, text="CITY COUNCIL OF BAGUIO", font=("Arial", 18, "bold"), text_color="#1e293b")
         self.header.pack(pady=(30, 5))
 
-        self.sub_header = ctk.CTkLabel(self.frame, text="Authorized Personnel Only", 
-                                       font=("Helvetica", 12))
+        self.sub_header = ctk.CTkLabel(self.frame, text="Authorized Personnel Only", font=("Arial", 12), text_color="#64748b")
         self.sub_header.pack(pady=(0, 30))
 
-        self.instruction = ctk.CTkLabel(self.frame, text="Enter Passkey", 
-                                        font=("Helvetica", 13, "bold"))
-        self.instruction.pack(pady=5)
-
-        self.passkey_entry = ctk.CTkEntry(self.frame, width=220, height=45, 
-                                          placeholder_text="••••••••", 
-                                          show="*", justify="center",
-                                          font=("Arial", 20))
+        self.passkey_entry = ctk.CTkEntry(self.frame, width=220, height=45, placeholder_text="Enter Passkey", show="*", justify="center")
         self.passkey_entry.pack(pady=10)
         self.passkey_entry.bind('<Return>', lambda event: self.verify_passkey())
 
-        self.unlock_button = ctk.CTkButton(self.frame, text="AUTHENTICATE", 
-                                           command=self.verify_passkey,
-                                           fg_color="#1B4D3E", 
-                                           hover_color="#14362B",
-                                           height=40,
-                                           font=("Helvetica", 13, "bold"))
+        self.unlock_button = ctk.CTkButton(self.frame, text="AUTHENTICATE", command=self.verify_passkey, fg_color="#2563eb", height=40, font=("Arial", 13, "bold"))
         self.unlock_button.pack(pady=30)
 
-        self.notice = ctk.CTkLabel(self.frame, text="Unauthorized access is recorded.", 
-                                   font=("Helvetica", 10), text_color="red")
-        self.notice.pack(side="bottom", pady=10)
-        # YOUR EXACT DESIGN ENDS HERE
-
     def verify_passkey(self):
-        SECRET_PASSKEY = "Baguio2024"
-        if self.passkey_entry.get() == SECRET_PASSKEY:
+        if self.passkey_entry.get() == "Baguio2024":
             self.show_dashboard()
         else:
             messagebox.showerror("Access Denied", "Invalid Passkey.")
-            self.passkey_entry.delete(0, 'end')
 
     def show_dashboard(self):
-        # Resize window for the dashboard
-        self.geometry("1100x600")
+        self.clear_screen()
+        self.geometry("1280x800")
         self.resizable(True, True)
+        self.create_navbar()
+
+        header_section = ctk.CTkFrame(self.container, fg_color="transparent")
+        header_section.pack(fill="x", padx=80, pady=(50, 0))
+
+        ctk.CTkLabel(header_section, text="Welcome back, Admin!", font=("Arial", 42, "bold"), text_color="#0f172a").pack(side="left")
         
-        # Clear login screen
-        for widget in self.container.winfo_children():
-            widget.destroy()
-
-        # --- NAVIGATION BAR (SIDEBAR) ---
-        self.sidebar = ctk.CTkFrame(self.container, width=220, corner_radius=0, fg_color="#1B4D3E")
-        self.sidebar.pack(side="left", fill="y")
-
-        ctk.CTkLabel(self.sidebar, text="COUNCIL MENU", font=("Helvetica", 16, "bold"), text_color="white").pack(pady=30, padx=20)
+        date_str = datetime.now().strftime("%B %d, %Y")
+        ctk.CTkLabel(header_section, text=date_str, font=("Arial", 14), fg_color="white", width=160, height=45, corner_radius=12).pack(side="right")
         
-        nav_buttons = ["🏠 Dashboard", "📅 Events", "📂 Registry", "📚 Resources"]
-        for btn in nav_buttons:
-            ctk.CTkButton(self.sidebar, text=btn, fg_color="transparent", anchor="w", hover_color="#2D5A27").pack(fill="x", padx=10, pady=5)
+        ctk.CTkLabel(self.container, text="System Overview & Control Panel", font=("Arial", 18), text_color="#64748b").pack(anchor="w", padx=80, pady=(5, 40))
+        ctk.CTkLabel(self.container, text="MANAGEMENT TOOLS", font=("Arial", 11, "bold"), text_color="#94a3b8").pack(anchor="w", padx=80, pady=(0, 20))
 
-        ctk.CTkButton(self.sidebar, text="Logout", fg_color="#A63D40", command=self.logout).pack(side="bottom", pady=20, padx=20, fill="x")
+        grid_container = ctk.CTkFrame(self.container, fg_color="transparent")
+        grid_container.pack(fill="both", expand=True, padx=70)
 
-        # --- MAIN CONTENT AREA ---
-        self.main_content = ctk.CTkFrame(self.container, fg_color="#F2F2F2")
-        self.main_content.pack(side="right", fill="both", expand=True)
-
-        ctk.CTkLabel(self.main_content, text="Legislative Dashboard", font=("Helvetica", 24, "bold"), text_color="#333").pack(anchor="w", padx=30, pady=(30, 20))
-
-        # --- CARDS CONTAINER ---
-        self.card_frame = ctk.CTkFrame(self.main_content, fg_color="transparent")
-        self.card_frame.pack(fill="both", expand=True, padx=20)
-
-        # Data for Cards
-        cards_data = [
-            ("📅", "EVENTS", "Schedule of Sessions\nand Public Hearings"),
-            ("📂", "REGISTRY DATABASE", "Official Ordinances\nand Records Archive"),
-            ("📚", "RESOURCES", "Legal Forms, Manuals\nand Guidelines")
+        tools = [
+            ("📅", "Events", "Seminars & Trainings", 0, 0, self.show_event_categories),
+            ("📁", "Registry", "Central Database", 0, 1, None),
+            ("☁️", "Cloud Files", "Storage & Transfer", 0, 2, None),
+            ("👥", "Accounts", "User Management", 1, 0, None),
+            ("🛡️", "Security", "Login & IP Logs", 1, 1, None),
+            ("📚", "Resources", "Shared Docs, Photos & Videos", 1, 2, None)
         ]
 
-        for i, (icon, title, desc) in enumerate(cards_data):
-            self.create_card(icon, title, desc, i)
+        for icon, title, sub, r, c, command in tools:
+            card = ctk.CTkFrame(grid_container, fg_color="white", corner_radius=20, border_width=1, border_color="#f1f5f9", height=140, cursor="hand2")
+            card.grid(row=r, column=c, padx=10, pady=10, sticky="nsew")
+            grid_container.grid_columnconfigure(c, weight=1)
+            card.grid_propagate(False)
 
-    def create_card(self, icon, title, desc, col):
-        card = ctk.CTkFrame(self.card_frame, width=280, height=320, corner_radius=15, fg_color="white", border_width=1, border_color="#DDD")
-        card.grid(row=0, column=col, padx=15, pady=10)
-        card.grid_propagate(False)
+            ctk.CTkLabel(card, text=icon, font=("Arial", 24), fg_color="#eff6ff", width=55, height=55, corner_radius=12).pack(side="left", padx=(25, 15))
+            txt_box = ctk.CTkFrame(card, fg_color="transparent")
+            txt_box.pack(side="left", anchor="center")
+            ctk.CTkLabel(txt_box, text=title, font=("Arial", 16, "bold"), text_color="#1e293b").pack(anchor="w")
+            ctk.CTkLabel(txt_box, text=sub, font=("Arial", 12), text_color="#64748b").pack(anchor="w")
 
-        ctk.CTkLabel(card, text=icon, font=("Helvetica", 50)).pack(pady=(40, 10))
-        ctk.CTkLabel(card, text=title, font=("Helvetica", 16, "bold"), text_color="#1B4D3E").pack(pady=5)
-        ctk.CTkLabel(card, text=desc, font=("Helvetica", 12), text_color="gray", justify="center").pack(pady=10, padx=20)
-        ctk.CTkButton(card, text="View Records", fg_color="#1B4D3E", width=140).pack(side="bottom", pady=30)
+            if command: card.bind("<Button-1>", lambda e, cmd=command: cmd())
 
-    def logout(self):
-        self.geometry("400x450")
-        self.resizable(False, False)
-        self.show_login_screen()
+    # --- FIXED EVENT CATEGORIES PAGE ---
+    def show_event_categories(self):
+        self.clear_screen()
+        self.create_navbar()
+
+        # Page Titles
+        ctk.CTkLabel(self.container, text="Event Categories", font=("Arial", 42, "bold"), text_color="#0f172a").pack(pady=(60, 5))
+        ctk.CTkLabel(self.container, text="Select a category to manage specific schedules and records.", font=("Arial", 16), text_color="#64748b").pack(pady=(0, 50))
+
+        # Main Grid Container
+        grid = ctk.CTkFrame(self.container, fg_color="transparent")
+        grid.pack(expand=True, fill="both", padx=100)
+        
+        # Configure the 3 columns to be exactly equal
+        grid.grid_columnconfigure((0, 1, 2), weight=1)
+
+        categories = [
+            ("👥", "Seminars", "Description", 0, 0),
+            ("👨‍🏫", "Public Consultation", "Description", 0, 1),
+            ("🏛️", "Committee Level Hearing", "Description", 0, 2),
+            ("📁", "Others", "General events and special occasions", 1, 0) # Placed in col 0 of row 1
+        ]
+
+        for icon, title, desc, r, c in categories:
+            # FIX: corner_radius=25 (not 75) to prevent pill-shape. Fixed width and height.
+            card = ctk.CTkFrame(grid, fg_color="white", corner_radius=30, border_width=1, border_color="#f1f5f9", width=340, height=380)
+            card.grid(row=r, column=c, padx=20, pady=20)
+            card.grid_propagate(False) # Prevents content from stretching the card
+
+            # Icon
+            ctk.CTkLabel(card, text=icon, font=("Arial", 60)).pack(pady=(50, 10))
+            
+            # Title
+            ctk.CTkLabel(card, text=title, font=("Arial", 22, "bold"), text_color="#0f172a").pack(pady=5)
+            
+            # Description (Wraplength ensures text doesn't break alignment)
+            ctk.CTkLabel(card, text=desc, font=("Arial", 14), text_color="#64748b", wraplength=280).pack(pady=(0, 20))
+            
+            # Action Button (Sticks to bottom)
+            btn = ctk.CTkButton(card, text="Open Manager →", fg_color="transparent", text_color="#2563eb", 
+                                hover_color="#f0f7ff", font=("Arial", 15, "bold"), 
+                                command=lambda t=title: print(f"Opening manager for {t}"))
+            btn.pack(side="bottom", pady=40)
 
 if __name__ == "__main__":
     app = BaguioCouncilApp()
