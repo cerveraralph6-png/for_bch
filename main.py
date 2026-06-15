@@ -144,7 +144,7 @@ class BaguioCouncilApp(ctk.CTk):
         ctk.CTkButton(self.frame, text="AUTHENTICATE", command=self.verify_passkey, fg_color="#2563eb", height=40, font=("Arial", 13, "bold")).pack(pady=30)
 
     def verify_passkey(self):
-        if self.passkey_entry.get() == "Baguio2024":
+        if self.passkey_entry.get() == "JansenPogi":
             self.show_dashboard()
         else:
             messagebox.showerror("Access Denied", "Invalid Passkey.")
