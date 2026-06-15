@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BCH | Event Categories</title>
+    <!-- Linking both CSS files to ensure the Nav styling is inherited from the dashboard -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/events.css') }}">
+</head>
+<body class="dashboard-bg">
+
+    <!-- NAVIGATION BAR (Identical to Dashboard) -->
+    <nav class="glass-nav">
+        <div class="nav-left">
+            <img src="{{ url_for('static', filename='Imag3s/baguio-logo-gov.png') }}" alt="logo" class="nav-logo">
+            <div class="nav-titles">
+                <h1>Sangguniang Panlungsod</h1>
+                <span>City Council (Baguio City)</span>
+            </div>
+        </div>
+        <div class="nav-actions">
+            <!-- Green Home Button -->
+            <button class="btn-home-green" onclick="window.location.href='/dashboard'">Home</button>
+            <!-- Red Logout Button -->
+            <button class="btn-logout-outline" onclick="window.location.href='/logout'">Logout</button>
+        </div>
+    </nav>
+
+    <main class="categories-container fade-in">
+        <header class="cat-header">
+            <h1>Event Categories</h1>
+            <p>Select a category to manage specific schedules and records.</p>
+        </header>
+
+        <div class="category-grid">
+            <div class="cat-card">
+                <div class="cat-icon-box">👥</div>
+                <h3>Seminars</h3>
+                <p class="description">Description</p>
+                <a href="/events/seminars" class="open-link">Open Manager →</a>
+            </div>
+
+            <div class="cat-card active-border"> <!-- Middle card special border -->
+                <div class="cat-icon-box">👨‍🏫</div>
+                <h3>Public Consultation</h3>
+                <p class="description">Description</p>
+                <a href="/events/consultation" class="open-link">Open Manager →</a>
+            </div>
+
+            <div class="cat-card">
+                <div class="cat-icon-box">🏛️</div>
+                <h3>Committee Level Hearing</h3>
+                <p class="description">Description</p>
+                <a href="/events/hearings" class="open-link">Open Manager →</a>
+            </div>
+
+            <div class="cat-card">
+                <div class="cat-icon-box">📂</div>
+                <h3>Others</h3>
+                <p class="description">Description</p>
+                <a href="/events/others" class="open-link">Open Manager →</a>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

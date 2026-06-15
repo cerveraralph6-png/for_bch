@@ -1,0 +1,61 @@
+/* --- BCH LOGIN DESIGN --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+body.login-bg {
+    background: #0f172a url('../Imag3s/baguio-logo-gov.png') no-repeat center center fixed;
+    background-size: 500px;
+    background-blend-mode: soft-light;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container { width: 100%; max-width: 400px; padding: 20px; }
+
+.login-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 50px 40px;
+    border-radius: 28px;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+    text-align: center;
+}
+
+.login-logo { height: 80px; margin-bottom: 20px; }
+
+.login-card h2 { color: #1e3a8a; font-weight: 800; margin-bottom: 10px; }
+.login-card p { color: #64748b; font-size: 0.9rem; margin-bottom: 30px; }
+
+.input-group { margin-bottom: 15px; }
+.input-group input {
+    width: 100%;
+    padding: 15px 20px;
+    border-radius: 12px;
+    border: 1.5px solid #e2e8f0;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.input-group input:focus { border-color: #2563eb; box-shadow: 0 0 0 4px rgba(37,99,235,0.1); }
+
+.btn-unlock {
+    width: 100%;
+    background: #1e3a8a;
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 1rem;
+}
+
+.btn-unlock:hover { background: #2563eb; transform: translateY(-2px); }
+
+.error-text { color: #ef4444; font-size: 0.85rem; margin-bottom: 15px; min-height: 20px; }

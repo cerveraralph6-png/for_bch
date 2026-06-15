@@ -1,0 +1,83 @@
+/* --- REGISTRY THEME (MATCHING SCREENSHOT) --- */
+
+.container-registry {
+    max-width: 1450px;
+    margin: 110px auto 50px;
+    padding: 0 30px;
+}
+
+/* Header & Badges */
+.registry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.title-area h1 { font-size: 2.2rem; font-weight: 800; color: #0f172a; margin: 0; }
+.badge-group { display: flex; gap: 10px; margin-top: 8px; }
+.badge-count, .badge-filtered {
+    padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700;
+}
+.badge-count { background: #f1f5f9; color: #64748b; }
+.badge-filtered { background: #eff6ff; color: #2563eb; }
+
+/* Header Buttons */
+.header-actions { display: flex; gap: 12px; }
+.btn-header-outline { 
+    background: white; border: 1.5px solid #e2e8f0; padding: 12px 20px; 
+    border-radius: 12px; font-weight: 700; color: #64748b; cursor: pointer;
+}
+.btn-header-success { 
+    background: #10b981; color: white; border: none; padding: 12px 24px; 
+    border-radius: 12px; font-weight: 700; cursor: pointer;
+}
+.btn-header-primary { 
+    background: #2563eb; color: white; border: none; padding: 12px 24px; 
+    border-radius: 12px; font-weight: 700; cursor: pointer;
+}
+
+/* Filter Console */
+.filter-console {
+    display: flex; gap: 15px; margin-bottom: 25px; align-items: center;
+}
+
+.search-box-main {
+    flex: 1; position: relative; display: flex; align-items: center;
+    background: white; border-radius: 14px; border: 1.5px solid #e2e8f0;
+}
+.search-box-main input {
+    width: 100%; padding: 14px 15px 14px 45px; border: none; border-radius: 14px; outline: none; font-size: 1rem;
+}
+.search-icon { position: absolute; left: 15px; opacity: 0.4; }
+
+.filter-controls { display: flex; gap: 10px; align-items: center; }
+.filter-select { padding: 12px 15px; border-radius: 12px; border: 1.5px solid #e2e8f0; font-weight: 700; color: #1e293b; background: white; }
+
+.date-range {
+    display: flex; align-items: center; gap: 8px; background: white; 
+    padding: 8px 15px; border-radius: 12px; border: 1.5px solid #e2e8f0;
+    font-size: 0.75rem; font-weight: 800; color: #94a3b8;
+}
+.date-range input { border: none; outline: none; font-weight: 700; color: #1e293b; }
+
+.btn-apply {
+    background: #1e293b; color: white; border: none; padding: 12px 25px; 
+    border-radius: 10px; font-weight: 800; cursor: pointer;
+}
+
+/* Table Design */
+.table-card {
+    background: white; border-radius: 20px; border: 1px solid #e2e8f0; overflow: hidden;
+}
+.table-scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; min-width: 1100px; }
+th {
+    background: #f8fafc; text-align: left; padding: 15px 20px; 
+    font-size: 0.75rem; text-transform: uppercase; color: #64748b; font-weight: 800;
+}
+td { padding: 15px 20px; border-bottom: 1px solid #f1f5f9; font-size: 0.9rem; color: #1e293b; font-weight: 600; }
+
+/* Nav Buttons Fix */
+.btn-nav-light { background: white; border: 1.5px solid #e2e8f0; padding: 8px 20px; border-radius: 10px; font-weight: 700; cursor: pointer; margin-right: 10px;}
+.btn-nav-danger { background: #fee2e2; border: 1.5px solid #fecaca; color: #b91c1c; padding: 8px 20px; border-radius: 10px; font-weight: 700; cursor: pointer; }

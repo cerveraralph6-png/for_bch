@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BCH | Record Registry</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/registry.css') }}">
+</head>
+<body class="dashboard-bg">
+
+    <!-- Navbar matching your screenshot -->
+    <nav class="glass-nav">
+        <div class="nav-left">
+            <img src="{{ url_for('static', filename='Imag3s/baguio-logo-gov.png') }}" class="nav-logo">
+            <div class="nav-titles">
+                <h1>Sangguniang Panlungsod</h1>
+                <span>City Council (Baguio City)</span>
+            </div>
+        </div>
+        <div class="nav-actions">
+            <button class="btn-nav-light" onclick="window.location.href='/dashboard'">Home</button>
+            <button class="btn-nav-danger" onclick="window.location.href='/logout'">Logout</button>
+        </div>
+    </nav>
+
+    <main class="container-registry">
+        <!-- Top Header Area -->
+        <div class="registry-header">
+            <div class="title-area">
+                <h1>Record Registry</h1>
+                <div class="badge-group">
+                    <span class="badge-count">Total: 0</span>
+                    <span class="badge-filtered">Filtered: 0</span>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="btn-header-outline">Template</button>
+                <button class="btn-header-outline">Export Selected (0)</button>
+                <button class="btn-header-success" onclick="openAddModal()">+ New Record</button>
+                <button class="btn-header-primary">📁 Import CSV</button>
+            </div>
+        </div>
+
+        <!-- Filter Console Area -->
+        <div class="filter-console">
+            <div class="search-box-main">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="regSearch" placeholder="Search records..." onkeyup="loadRecords()">
+            </div>
+            
+            <div class="filter-controls">
+                <select class="filter-select"><option>All Years</option></select>
+                
+                <div class="date-range">
+                    <span>FROM</span><input type="date">
+                    <span>TO</span><input type="date">
+                </div>
+
+                <select class="filter-select"><option>Newest First</option></select>
+                
+                <button class="btn-apply">Apply</button>
+            </div>
+        </div>
+
+        <!-- Table View -->
+        <div class="table-card">
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox"></th>
+                            <th>Date Rec.</th>
+                            <th>Type</th>
+                            <th>Proponent</th>
+                            <th>Subject</th>
+                            <th>Latest Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- Data will be loaded by registry.js -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='scripts/registry.js') }}"></script>
+</body>
+</html>

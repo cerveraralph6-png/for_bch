@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCH | Local Admin Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/dashboard.css') }}">
+</head>
+<body class="dashboard-bg">
+
+    <nav class="glass-nav">
+        <div class="nav-left">
+            <img src="{{ url_for('static', filename='Imag3s/baguio-logo-gov.png') }}" alt="logo" class="nav-logo">
+            <div class="nav-titles">
+                <h1>Sangguniang Panlungsod</h1>
+                <span>City Council (Baguio City)</span>
+            </div>
+        </div>
+        <div class="nav-actions">
+            <a href="/logout" class="btn-logout">Logout</a>
+        </div>
+    </nav>
+
+    <main class="fade-in">
+        <section class="welcome-section">
+            <div class="greetings">
+                <h1>Welcome back, <span class="admin-name">{{ user_name }}!</span></h1>
+                <p>Local System Overview & Control Panel</p>
+            </div>
+            <div class="date-display">
+                {{ date }}
+            </div>
+        </section>
+
+        <h2 class="section-label">Management Tools</h2>
+        
+        <div class="card-grid">
+            <!-- Registry Card -->
+            <a href="/registry" class="card-link">
+                <div class="tool-card">
+                    <div class="icon-wrapper"><img src="{{ url_for('static', filename='Imag3s/database.webp') }}" alt="database"></div>
+                    <div class="tool-info"><h3>Registry</h3><p>Central Database</p></div>
+                </div>
+            </a>
+
+            <!-- Events Card -->
+            <a href="/events" class="card-link">
+                <div class="tool-card">
+                    <div class="icon-wrapper"><img src="{{ url_for('static', filename='Imag3s/events.webp') }}" alt="events"></div>
+                    <div class="tool-info"><h3>Events</h3><p>Seminars & Trainings</p></div>
+                </div>
+            </a>
+
+            <!-- Resources Card -->
+            <a href="/resources" class="card-link">
+                <div class="tool-card">
+                    <div class="icon-wrapper"><img src="{{ url_for('static', filename='Imag3s/Files.webp') }}" alt="files"></div>
+                    <div class="tool-info"><h3>Resources</h3><p>Local File Cloud</p></div>
+                </div>
+            </a>
+
+            <!-- Accounts Card -->
+            <a href="/accounts" class="card-link">
+                <div class="tool-card">
+                    <div class="icon-wrapper"><img src="{{ url_for('static', filename='Imag3s/accounts.webp') }}" alt="accounts"></div>
+                    <div class="tool-info"><h3>Accounts</h3><p>User Management</p></div>
+                </div>
+            </a>
+            
+            <!-- Security Card -->
+            <a href="/security" class="card-link">
+                <div class="tool-card">
+                    <div class="icon-wrapper"><img src="{{ url_for('static', filename='Imag3s/security.webp') }}" alt="security"></div>
+                    <div class="tool-info"><h3>Security</h3><p>System Logs</p></div>
+                </div>
+            </a>
+        </div>
+    </main>
+
+</body>
+</html>
