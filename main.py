@@ -126,8 +126,8 @@ class BaguioCouncilApp(ctk.CTk):
         ctk.CTkLabel(title_box, text="Record Registry", font=("Arial", 32, "bold"), text_color="#0f172a").pack(side="left")
         
         # Badges for counts
-        ctk.CTkLabel(title_box, text="Total: 0 Kasi pogi si Jansen", font=("Arial", 11), fg_color="#f1f5f9", text_color="#64748b", corner_radius=15, width=90, height=26).pack(side="left", padx=(20, 5))
-        ctk.CTkLabel(title_box, text="Filtered: 0 Kasi nga Pogi si Jansen", font=("Arial", 11), fg_color="#eff6ff", text_color="#2563eb", corner_radius=15, width=100, height=26).pack(side="left", padx=5)
+        ctk.CTkLabel(title_box, text="Total: 0 ", font=("Arial", 11), fg_color="#f1f5f9", text_color="#64748b", corner_radius=15, width=90, height=26).pack(side="left", padx=(20, 5))
+        ctk.CTkLabel(title_box, text="Filtered: 0", font=("Arial", 11), fg_color="#eff6ff", text_color="#2563eb", corner_radius=15, width=100, height=26).pack(side="left", padx=5)
 
         # Action Buttons
         btn_frame = ctk.CTkFrame(header_row, fg_color="transparent")
