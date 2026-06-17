@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Management - Baguio City Council</title>
+    <style>
+        :root {
+            --primary-blue: #2563eb;
+            --btn-hover: #1d4ed8;
+            --bg-light: #f1f5f9;
+            --success-green: #10b981;
+            --danger-red: #ef4444;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        /* --- Header --- */
+        header {
+            background: white;
+            padding: 12px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .brand img {
+            height: 50px;
+            width: auto;
+        }
+
+        .brand-text h1 {
+            font-size: 1.1rem;
+            margin: 0;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .brand-text p {
+            font-size: 0.75rem;
+            margin: 0;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 8px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .btn-home { background: var(--success-green); color: white; }
+        .btn-logout { background: white; color: var(--danger-red); border: 1px solid #fee2e2; }
+        .btn:hover { filter: brightness(95%); }
+
+        /* --- Main Content --- */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            min-height: 80vh;
+        }
+
+        h2.page-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        /* --- Upload Section --- */
+        .upload-zone {
+            border: 2px dashed #93c5fd;
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            background-color: #f0f7ff;
+            margin-bottom: 40px;
+        }
+
+        .upload-zone h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .btn-outline-blue {
+            background: white;
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+            padding: 10px 24px;
+            border-radius: 10px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .file-info {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .btn-upload {
+            background: var(--primary-blue);
+            color: white;
+            padding: 12px 30px;
+            font-weight: 700;
+        }
+
+        /* --- Repository Table --- */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        .repository-card {
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .table-head {
+            background: #f8fafc;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            padding: 15px 30px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .table-head span {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .table-body {
+            min-height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* --- Share Section --- */
+        .share-card {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+        }
+
+        .share-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            gap: 20px;
+            align-items: end;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .input-group select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: white;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .btn-share {
+            background: var(--primary-blue);
+            color: white;
+            height: 44px;
+            padding: 0 30px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand">
+            <!-- Replace with actual logo URL -->
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Seal_of_Baguio.svg/1200px-Seal_of_Baguio.svg.png" alt="Baguio Seal">
+            <div class="brand-text">
+                <h1>Sangguniang Panlungsod</h1>
+                <p>CITY COUNCIL (BAGUIO CITY)</p>
+            </div>
+        </div>
+        <div class="nav-actions">
+            <button class="btn btn-home">Home</button>
+            <button class="btn btn-logout">Logout</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2 class="page-title">File Management</h2>
+
+        <!-- Upload Section -->
+        <section class="upload-zone">
+            <h3>Upload New Document or Video</h3>
+            <button class="btn-outline-blue">
+                <span>📁</span> Select from Device
+            </button>
+            <div class="file-info">No file chosen</div>
+            <button class="btn btn-upload">Upload to Secure Server</button>
+        </section>
+
+        <!-- Repository Section -->
+        <div class="section-header">
+            <span>📂</span> My Repository
+        </div>
+        <section class="repository-card">
+            <div class="table-head">
+                <span>File Details</span>
+                <span>Size</span>
+                <span>Date</span>
+                <span>Actions</span>
+            </div>
+            <div class="table-body">
+                No files found in your repository.
+            </div>
+        </section>
+
+        <!-- Share Section -->
+        <div class="section-header">
+            <span>🚀</span> Share Document with Staff
+        </div>
+        <section class="share-card">
+            <form class="share-form">
+                <div class="input-group">
+                    <label>Select Recipient</label>
+                    <select>
+                        <option>Choose staff member...</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Select File</label>
+                    <select>
+                        <option>Choose file...</option>
+                    </select>
+                </div>
+                <button type="button" class="btn btn-share">Share File</button>
+            </form>
+        </section>
+    </main>
+
+</body>
+</html>

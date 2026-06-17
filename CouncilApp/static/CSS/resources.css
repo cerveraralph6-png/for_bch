@@ -1,0 +1,159 @@
+:root {
+    --primary-blue: #2563eb;
+    --border-dashed: #3b82f6; /* The specific blue for the dashed line */
+    --bg-light-blue: #f0f7ff; /* The tint inside the upload box */
+    --bg-gray: #f8fafc;       /* The tint inside the share section */
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --success-teal: #10b981;
+}
+
+/* Container & Typography */
+.file-mgmt-container {
+    max-width: 1300px;
+    margin: 20px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.file-mgmt-container h2 {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-top: 0;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #edf2f7;
+    padding-bottom: 15px;
+}
+
+/* 1. Upload Section */
+.upload-box {
+    border: 1.5px dashed var(--border-dashed);
+    background-color: var(--bg-light-blue);
+    border-radius: 12px;
+    padding: 50px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.upload-box h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.btn-select {
+    background: white;
+    border: 1.5px solid var(--primary-blue);
+    color: var(--primary-blue);
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.file-status-text {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin: 15px 0;
+}
+
+.btn-upload-solid {
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    padding: 12px 35px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* 2. Repository Section */
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 800;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.repo-table-container {
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+
+.repo-header {
+    background-color: var(--bg-gray);
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    padding: 15px 25px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.repo-header span {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.repo-empty {
+    padding: 60px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 15px;
+}
+
+/* 3. Share Section */
+.share-card {
+    background-color: var(--bg-gray);
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 30px;
+}
+
+.share-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 20px;
+    align-items: flex-end;
+}
+
+.field-group label {
+    display: block;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.field-group select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    background: white;
+    font-size: 14px;
+    color: #334155;
+    outline: none;
+}
+
+.btn-share-blue {
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+}

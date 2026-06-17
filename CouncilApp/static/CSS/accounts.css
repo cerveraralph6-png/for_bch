@@ -1,0 +1,290 @@
+/* Base Styles */
+:root {
+    --primary-blue: #2563eb;
+    --success-green: #10b981;
+    --danger-red: #ef4444;
+    --bg-light: #f8fafc;
+    --border-color: #e2e8f0;
+    --text-dark: #0f172a;
+    --text-muted: #64748b;
+    /* Added for Modal */
+    --modal-overlay: rgba(15, 23, 42, 0.6); 
+    --input-bg: #ffffff;
+    --cancel-bg: #f1f5f9;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-light);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ... (Your existing Navbar, Brand, and Table styles remain the same) ... */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 40px;
+    background-color: white;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand img {
+    height: 40px;
+}
+
+.brand h1 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.nav-actions {
+    display: flex;
+    gap: 12px;
+}
+
+/* Buttons */
+.btn {
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    border: none;
+    flex: 1; /* Allows buttons to share space in modal */
+}
+
+.btn-home {
+    background-color: var(--success-green);
+    color: white;
+}
+
+.btn-logout {
+    background-color: white;
+    color: var(--danger-red);
+    border: 1px solid #fee2e2;
+}
+
+.btn-create {
+    background-color: var(--primary-blue);
+    color: white;
+}
+
+.btn-cancel {
+    background-color: var(--cancel-bg);
+    color: var(--text-muted);
+}
+
+.btn:hover {
+    filter: brightness(95%);
+}
+
+/* --- MODAL STYLES --- */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--modal-overlay);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-card {
+    background: white;
+    width: 100%;
+    max-width: 520px;
+    padding: 48px;
+    border-radius: 32px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.modal-card h2 {
+    margin: 0 0 32px 0;
+    font-size: 1.85rem;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+    color: var(--text-dark);
+    transition: border-color 0.2s;
+    background-color: var(--input-bg);
+}
+
+/* Matches the blue border on the first input in your image */
+.form-control:focus, .form-control.active {
+    outline: none;
+    border-color: var(--primary-blue);
+}
+
+select.form-control {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 16px;
+    padding-right: 40px;
+}
+
+.modal-footer {
+    display: flex;
+    gap: 16px;
+    margin-top: 40px;
+}
+/* --- HIGH-FIDELITY MODAL STYLES --- */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Matching the specific slate-blue overlay from the image */
+    background-color: rgba(71, 85, 105, 0.8); 
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    backdrop-filter: blur(2px); /* Adds a slight professional blur */
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-card {
+    background: white;
+    width: 100%;
+    max-width: 540px;
+    padding: 50px;
+    /* Extra large border radius from the image */
+    border-radius: 40px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.modal-card h2 {
+    margin-bottom: 35px;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #000;
+    letter-spacing: -0.02em;
+}
+
+.form-group {
+    margin-bottom: 28px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 800;
+    /* Specific blue-gray color for labels */
+    color: #718096;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    letter-spacing: 0.05em;
+}
+
+.form-control {
+    width: 100%;
+    padding: 16px 20px;
+    /* Matching the soft rounded corners of the inputs */
+    border-radius: 16px;
+    border: 1.5px solid #edf2f7;
+    background-color: #fff;
+    font-size: 16px;
+    color: #1a202c;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+/* The blue border state seen in the image for the first input */
+.form-control:focus, .form-control.active-input {
+    border-color: #3182ce;
+    box-shadow: 0 0 0 1px #3182ce;
+}
+
+/* Custom dropdown styling to match the image's clean arrow */
+select.form-control {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+    background-size: 18px;
+    padding-right: 50px;
+}
+
+.modal-footer {
+    display: flex;
+    gap: 16px;
+    margin-top: 40px;
+}
+
+.btn-save {
+    flex: 1;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 18px;
+    border-radius: 14px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-save:hover {
+    background-color: #1d4ed8;
+}
+
+.btn-cancel {
+    flex: 1.5; /* The cancel button is slightly wider in the image */
+    background-color: #f1f5f9;
+    color: #64748b;
+    border: none;
+    padding: 18px;
+    border-radius: 14px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-cancel:hover {
+    background-color: #e2e8f0;
+}
