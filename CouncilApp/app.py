@@ -99,6 +99,18 @@ def events():
     if 'user_id' not in session: return redirect(url_for('index'))
     return render_template('events.html')
 
+@app.route('/accounts')
+def accounts():
+    if 'user_id' not in session: return redirect(url_for('index'))
+    return render_template('accounts.html')
+
+@app.route('/resources')
+def resources():
+    if 'user_id' not in session: return redirect(url_for('index'))
+    return render_template('resources.html')
+
+
+
 # --- REGISTRY API ---
 
 @app.route('/api/records', methods=['GET'])
@@ -160,6 +172,7 @@ def export_csv():
     file_path = "BCH_Registry_Export.csv"
     df.to_csv(file_path, index=False)
     return send_file(file_path, as_attachment=True)
+
 
 if __name__ == '__main__':
     app.run(port=5000)
