@@ -4,8 +4,8 @@ import webview
 from app import app  # Imports your Flask app
 
 # --- CENTRAL CONFIGURATION ---
-# Set this to the physical IP address of Computer A (the main server/database host)
-HOST_IP = '192.168.1.15' 
+# Configured with your actual Host IP address
+HOST_IP = '192.168.6.93' 
 PORT = 5000
 
 def start_flask():
