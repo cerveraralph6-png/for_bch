@@ -19,7 +19,7 @@ if __name__ == '__main__':
     # 3. Create the window
     webview.create_window(
         'Baguio City Hall | Management System', 
-        'http://127.0.0.1:5000',
+        'http://localhost/CouncilApp/templates/index.html',
         width=1200,
         height=800,
         resizable=True,
