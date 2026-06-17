@@ -4,12 +4,13 @@ import time
 from app import app
 
 # Function to run the Flask server in the background
-def run_server():
-    app.run(port=5000, debug=False, use_reloader=False)
+def start_flask():
+    # Change host to '0.0.0.0'
+    app.run(host='0.0.0.0', port=5000, debug=False, use_reloader=False)
 
 if __name__ == '__main__':
     # 1. Start Flask in a separate thread
-    t = threading.Thread(target=run_server)
+    t = threading.Thread(target=start_flask)
     t.daemon = True
     t.start()
 

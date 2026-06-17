@@ -425,5 +425,5 @@ def export_csv():
 
 
 if __name__ == '__main__':
-    # Configured to run on standard Flask port 5000
-    app.run(port=5000, debug=True)  
+    # Change host to '0.0.0.0'
+    app.run(host='0.0.0.0', port=5000, debug=True)
