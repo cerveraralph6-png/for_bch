@@ -35,13 +35,6 @@
         <h2 class="section-label">Management Tools</h2>
         
         <div class="card-grid">
-            <!-- Registry Card -->
-            <a href="/registry" class="card-link">
-                <div class="tool-card">
-                    <div class="icon-wrapper"><img src="{{ url_for('static', filename='Imag3s/database.webp') }}" alt="database"></div>
-                    <div class="tool-info"><h3>Registry</h3><p>Central Database</p></div>
-                </div>
-            </a>
 
             <!-- Events Card -->
             <a href="/events" class="card-link">
@@ -50,6 +43,16 @@
                     <div class="tool-info"><h3>Events</h3><p>Seminars & Trainings</p></div>
                 </div>
             </a>
+
+            
+            <!-- Registry Card -->
+            <a href="/registry" class="card-link">
+                <div class="tool-card">
+                    <div class="icon-wrapper"><img src="{{ url_for('static', filename='Imag3s/database.webp') }}" alt="database"></div>
+                    <div class="tool-info"><h3>Registry</h3><p>Central Database</p></div>
+                </div>
+            </a>
+
 
             <!-- Resources Card -->
             <a href="/resources" class="card-link">
@@ -67,13 +70,6 @@
                 </div>
             </a>
             
-            <!-- Security Card -->
-            <a href="/security" class="card-link">
-                <div class="tool-card">
-                    <div class="icon-wrapper"><img src="{{ url_for('static', filename='Imag3s/security.webp') }}" alt="security"></div>
-                    <div class="tool-info"><h3>Security</h3><p>System Logs</p></div>
-                </div>
-            </a>
         </div>
     </main>
 
