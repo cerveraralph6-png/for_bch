@@ -12,6 +12,7 @@ app.secret_key = "bch_secret_key_123"
 MYSQL_CONFIG = {
     'host': '127.0.0.1',
     'user': 'root',
+    'port': 3306,
     'password': '',  # XAMPP default MySQL password is empty
     'database': 'bch_database'
 }
